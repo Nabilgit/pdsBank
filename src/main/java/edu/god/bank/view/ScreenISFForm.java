@@ -160,8 +160,8 @@ public class ScreenISFForm extends javax.swing.JFrame {
                         .addComponent(investmentField)
                         .addComponent(assetsAmountField)
                         .addComponent(realEstateAmountField)
-                        .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(surnameField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(surnameField, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

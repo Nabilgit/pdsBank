@@ -85,25 +85,25 @@ public class Features {
         return wealthTaxe;
         }else if (estateTotal > 800000 && estateTotal <= 1300000){
         
-        wealthTaxe = (estateTotal - 800000) *0.5 - ((estate.getDonation()+estate.getInvestement())*0.5)*0.1 ;
+        wealthTaxe = (estateTotal - 800000) *0.5 - ((estate.getDonation()+estate.getInvestement())*0.5);
         return wealthTaxe;
 
         }else if(estateTotal > 1300000 && estateTotal <= 2570000 ){
         
-            double slice1 = (estateTotal -1300000) * 0.7;
-            double slice2 = (1300000 - 800000) *0.5; 
+            double slice1 = (estateTotal -1300000) * 0.07;
+            double slice2 = (1300000 - 800000) *0.05; 
             
-            wealthTaxe = slice1+slice2 - ((estate.getDonation()+estate.getInvestement())*0.5)*0.1 ;
+            wealthTaxe = slice1+slice2 - ((estate.getDonation()+estate.getInvestement())*0.5);
             
             
             return wealthTaxe;
 
         }else if(estateTotal > 2570000){
     
-            double slice1 = (estateTotal - 2570000) * 1.0;
-            double slice2 = (2570000 - 1300000) *0.7; 
-            double slice3 =(1300000 - 800000) *0.5; 
-            wealthTaxe = slice1+slice2+slice3 -((estate.getDonation()+estate.getInvestement())*0.5)*0.1 ;
+            double slice1 = (estateTotal - 2570000) * 0.1;
+            double slice2 = (2570000 - 1300000) *0.07; 
+            double slice3 =(1300000 - 800000) *0.05; 
+            wealthTaxe = slice1+slice2+slice3 -((estate.getDonation()+estate.getInvestement())*0.5);
 
         return wealthTaxe;
         } else{

@@ -40,22 +40,6 @@ public class ServerParserJSON {
         }
         return request;
     }
-    /*
-    static public  Client getClient(String jsonContent){
-        Client client = new Client();
-        JSONObject jObject = null;
-        try {
-            jObject = new JSONObject(jsonContent);
-            client.setName(jObject.getString("name"));
-            client.setFirstName(jObject.getString("firstName"));
-            client.setAddress(jObject.getString("address"));
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return client;
-    }*/
     
     
     static public Client retriveClient(String jsonContent){

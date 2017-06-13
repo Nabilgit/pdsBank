@@ -85,9 +85,9 @@
                       <Component id="investmentField" max="32767" attributes="0"/>
                       <Component id="assetsAmountField" alignment="0" max="32767" attributes="0"/>
                       <Component id="realEstateAmountField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="emailField" alignment="1" max="32767" attributes="0"/>
                       <Component id="surnameField" alignment="1" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="emailField" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
