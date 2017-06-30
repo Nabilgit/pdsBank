@@ -70,8 +70,8 @@ public class ScreenIsfFormController implements ActionListener {
           
          communicator.sendData(new ClientFactoryJSON().makeJsonCalculISF(Float.parseFloat(realEstateAmount), capitalEstateAmount, assetsEstateAmount, donation, investement));
          double isf = Double.parseDouble(communicator.receiveISFResult());
-         double totalAmount = capitalEstateAmount + assetsEstateAmount + capitalEstateAmount;
-
+         double totalAmount = capitalEstateAmount + assetsEstateAmount + Integer.parseInt(realEstateAmount);
+         System.out.println( capitalEstateAmount+" test  chiffre : " +totalAmount );
             //communicator.sendData(new ClientFactoryJSON().makeJsonInsertRealEstate(c.getId(), realEstateAmount));
           this.fenIsf.dispose();
           ScreenDisplayISF displayFen = new ScreenDisplayISF(isf, totalAmount);

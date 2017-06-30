@@ -25,7 +25,7 @@ public class ScreenDisplayISF extends javax.swing.JFrame {
         setVisible(true);
         DecimalFormatSymbols format = new DecimalFormatSymbols();
         format.setGroupingSeparator(' ');
-        DecimalFormat ds = new DecimalFormat("###,###.00",format);
+        DecimalFormat ds = new DecimalFormat("###,###,##0.00", format);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         isfLabel.setText(String.valueOf(ds.format(isf)));
         jLabel5.setText(String.valueOf(ds.format(totalAmount)));
