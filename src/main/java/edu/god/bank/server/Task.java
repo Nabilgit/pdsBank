@@ -7,6 +7,7 @@ import edu.god.bank.bean.AppAuthentification;
 import edu.god.bank.bean.Client;
 import edu.god.bank.bean.EstateValue;
 import edu.god.bank.bean.RealEstate;
+import edu.god.bank.dao.CalculISFDAO;
 import edu.god.bank.server.ServerFactoryJSON;
 import edu.god.bank.server.ServerParserJSON;
 
@@ -46,8 +47,9 @@ public class Task {
       
       
         public static String getIsfResult(String jsonContent, Connection connection){
+        CalculISFDAO dao = new CalculISFDAO();
         EstateValue vestate = ServerParserJSON.getISFComposants(jsonContent);
-        result = ServerFactoryJSON.getISF(Features.CalculEstate(vestate, connection));
+        result = ServerFactoryJSON.getISF(Features.CalculEstate(vestate, connection,dao));
         return result;
       }
 

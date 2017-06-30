@@ -5,6 +5,8 @@
  */
 package edu.god.bank.view;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import edu.god.bank.controllers.ControllerScreenDisplay;
 import edu.god.bank.controllers.ScreenIsfFormController;
 import javax.swing.JFrame;
@@ -21,9 +23,12 @@ public class ScreenDisplayISF extends javax.swing.JFrame {
     public ScreenDisplayISF(double isf, double totalAmount) {
         initComponents();
         setVisible(true);
+        DecimalFormatSymbols format = new DecimalFormatSymbols();
+        format.setGroupingSeparator(' ');
+        DecimalFormat ds = new DecimalFormat("###,###.00",format);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        isfLabel.setText(String.valueOf(isf));
-        jLabel5.setText(String.valueOf(totalAmount));
+        isfLabel.setText(String.valueOf(ds.format(isf)));
+        jLabel5.setText(String.valueOf(ds.format(totalAmount)));
         retourButton.addActionListener(new ControllerScreenDisplay(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

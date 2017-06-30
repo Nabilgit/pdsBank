@@ -74,6 +74,10 @@ public class ScreenISFForm extends javax.swing.JFrame {
         surnameLabel.setText("Prenom :");
         surnameLabel.setToolTipText("");
 
+        nameField.setText("Stroh");
+
+        surnameField.setText("Nicolas");
+
         realEstateAmountField.setToolTipText("");
         realEstateAmountField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +105,7 @@ public class ScreenISFForm extends javax.swing.JFrame {
 
         calculateISFButton.setText("Calculer");
 
+        emailField.setText("nicolas.stroh@gmail.com");
         emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailFieldActionPerformed(evt);

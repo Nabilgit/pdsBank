@@ -11,6 +11,7 @@ import edu.god.bank.bean.AppAuthentification;
 import edu.god.bank.bean.Client;
 import edu.god.bank.bean.EstateValue;
 import edu.god.bank.bean.RealEstate;
+import edu.god.bank.dao.CalculISFDAO;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -75,37 +76,44 @@ public class Features {
         }
     }
     
-    public static double CalculEstate(EstateValue estate, Connection connection){
+    public static double CalculEstate(EstateValue estate, Connection connection, CalculISFDAO dao){
         
         float estateTotal = 0;
+        int firstCutValue= dao.getFirstCutValue(connection);
+        int secondCutValue = dao.getSecondCutValue(connection);
+        int thirdCutValue  = dao.getThirdCutValue(connection);
         double wealthTaxe = 0;
+        double firstCut = dao.getFirstRate(connection);
+        double secondCut= dao.getSecondRate(connection);
+        double thirdCut=dao.getThirdRate(connection);
+        System.out.println( "Cut value : " + firstCutValue +  " " + secondCutValue + " " + thirdCutValue +" ");
+        System.out.println( "Cut rate : " + firstCut +  " " + secondCut + " " + thirdCut +" ");
         estateTotal = estate.getAssetsestate() + estate.getCapitalestate()+estate.getRealestate();
-        if( estateTotal <= 800000){
         
-        return wealthTaxe;
-        }else if (estateTotal > 800000 && estateTotal <= 1300000){
+        if( estateTotal <= firstCutValue){
         
-        wealthTaxe = (estateTotal - 800000) *0.5 - ((estate.getDonation()+estate.getInvestement())*0.5);
-        return wealthTaxe;
-
-        }else if(estateTotal > 1300000 && estateTotal <= 2570000 ){
+            return wealthTaxe;
         
-            double slice1 = (estateTotal -1300000) * 0.07;
-            double slice2 = (1300000 - 800000) *0.05; 
-            
-            wealthTaxe = slice1+slice2 - ((estate.getDonation()+estate.getInvestement())*0.5);
-            
-            
+        }else if (estateTotal > firstCutValue && estateTotal <= secondCutValue){
+        
+            wealthTaxe = (estateTotal - firstCutValue) * firstCut - ((estate.getDonation()+estate.getInvestement())*0.05);
             return wealthTaxe;
 
-        }else if(estateTotal > 2570000){
-    
-            double slice1 = (estateTotal - 2570000) * 0.1;
-            double slice2 = (2570000 - 1300000) *0.07; 
-            double slice3 =(1300000 - 800000) *0.05; 
-            wealthTaxe = slice1+slice2+slice3 -((estate.getDonation()+estate.getInvestement())*0.5);
+        }else if(estateTotal > secondCutValue && estateTotal <= 2570000 ){
+        
+            double slice1 = (estateTotal -secondCutValue) * secondCut;
+            double slice2 = (secondCutValue - firstCutValue) * firstCut;           
+            wealthTaxe = slice1+slice2 - ((estate.getDonation()+estate.getInvestement())*0.05);    
+            return wealthTaxe;
 
-        return wealthTaxe;
+        }else if(estateTotal > thirdCutValue){
+    
+            double slice1 = (estateTotal - thirdCutValue) * thirdCut;
+            double slice2 = (thirdCutValue - secondCutValue) * secondCut; 
+            double slice3 =(secondCutValue - firstCutValue) *thirdCut; 
+            wealthTaxe = slice1+slice2+slice3 -((estate.getDonation()+estate.getInvestement())*0.05);
+            return wealthTaxe;
+        
         } else{
             return 0;
         }
